@@ -1,0 +1,4 @@
+<design:component>
+	<design:attribute name="latitudeField" label="Latitude Field"  description="The API Name of the record latitude field" />
+    <design:attribute name="longitudeField" label="Longitude Field"  description="The API Name of the record longitude field" />
+</design:component>

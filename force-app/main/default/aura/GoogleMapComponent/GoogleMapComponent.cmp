@@ -1,0 +1,62 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName" access="global">
+    
+    <aura:attribute name="latitudeField" type="String"/>
+    <aura:attribute name="longitudeField" type="String"/>
+    
+    <aura:attribute name="mapMarkers" type="Object"/>
+    <aura:attribute name="zoomLevel" type="Integer" />
+    
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="recordToEdit" type="String" default="Opportunity"/>
+    
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="simpleRecord" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+    
+    <aura:attribute name="mapReady" type="Boolean" default="false"/>
+    
+    <force:recordData aura:id="recordHandler" 
+      recordId="{!v.recordId}"
+      layoutType="FULL"
+      targetRecord="{!v.record}"
+      targetFields="{!v.simpleRecord}"
+      targetError="{!v.recordError}"
+      mode="VIEW"
+      recordUpdated="{!c.handleRecordUpdated}"
+      />
+
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <lightning:card iconName="action:map" title="Google Map">
+        
+        <p class="slds-p-horizontal_small">
+           
+            <aura:if isTrue="{!and(!empty(v.latitudeField),!empty(v.longitudeField))}">
+                
+                <aura:if isTrue="{!v.mapReady}">
+                
+                    <lightning:map mapMarkers="{! v.mapMarkers }" zoomLevel="{!v.zoomLevel}" />
+                    
+                    <aura:set attribute="else">
+                        
+                        <ui:message title="Error" severity="error" closable="false">
+                            Coordinates are not defined for this {!v.sObjectName}. <br/>
+                        	Complete <b>{!v.latitudeField}</b> and <b>{!v.longitudeField}</b> fields for displaying the map.
+                        </ui:message>
+
+                    </aura:set>
+                    
+                </aura:if>
+      
+                <aura:set attribute="else">
+                    <ui:message title="Error" severity="error" closable="false">
+                    	Latitude and Longitude API Field Names are already set.
+                    </ui:message>
+                </aura:set>
+            </aura:if> 
+
+        </p>
+        
+    </lightning:card>
+
+</aura:component>
