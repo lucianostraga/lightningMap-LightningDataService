@@ -6,4 +6,4 @@ For the ones that had to fight (I did), to obtain a similar result before this c
 
 Now it is drastically easier. The lightning:map component supports natively, both geo coordinates and and physical addresses, as Map Markers; following the standards of the Google maps API.
 
-![MapGIF](https://rahamber.sirv.com/GoogleMapComponent.gif)
+![MapGIF](https://doc-14-50-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/lu98rqgdqndrlv183htnbarsfvc6hbsa/1541642400000/05485554633337465967/*/1YXOt2gi_kB8SCzXQm2BBR0Xn3XmHuu3Z)
